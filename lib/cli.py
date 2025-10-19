@@ -1,6 +1,7 @@
 from lib.models.room import Room
 from lib.models.song import Song
 from lib.models.performer import Performer
+from lib.models.performance import Performance
 
 
 def main_menu():
@@ -9,7 +10,8 @@ def main_menu():
         print("1. Manage Rooms")
         print("2. Manage Songs")
         print("3. Manage Performers")
-        print("4. Exit")
+        print("4. Manage Performances")
+        print("5. Exit")
         choice = input("Choose an option: ")
 
         if choice == "1":
@@ -19,7 +21,9 @@ def main_menu():
         elif choice == "3":
             performer_menu()
         elif choice == "4":
-            print("Goodbye.")
+            performance_menu()
+        elif choice == "5":
+            print("Exiting... Goodbye!")
             break
         else:
             print("Invalid choice. Try again.")
@@ -146,6 +150,53 @@ def performer_menu():
                     print("Performer deleted.")
                 else:
                     print("Performer not found.")
+            except ValueError:
+                print("Invalid ID.")
+
+        elif choice == "4":
+            break
+        else:
+            print("Invalid choice. Try again.")
+
+def performance_menu():
+    while True:
+        print("\nPerformance Logging")
+        print("1. Log New Performance")
+        print("2. View All Performances")
+        print("3. Delete Performance")
+        print("4. Back to Main Menu")
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            try:
+                performer_id = int(input("Enter Performer ID: "))
+                song_id = int(input("Enter Song ID: "))
+                room_id = int(input("Enter Room ID: "))
+                date = input("Enter date (YYYY-MM-DD): ")
+                time = input("Enter time (HH:MM): ")
+
+                performance = Performance(performer_id, song_id, room_id, date, time)
+                performance.save()
+                print("Performance logged successfully.")
+            except ValueError as e:
+                print(f"Error: {e}")
+
+        elif choice == "2":
+            performances = Performance.get_all()
+            if not performances:
+                print("No performances found.")
+            for p in performances:
+                print(f"{p['id']}: {p['performer']} sang '{p['song']}' in {p['room']} on {p['date']} at {p['time']}")
+
+        elif choice == "3":
+            try:
+                performance_id = int(input("Enter Performance ID to delete: "))
+                performance = Performance.find_by_id(performance_id)
+                if performance:
+                    performance.delete()
+                    print("Performance deleted.")
+                else:
+                    print("Performance not found.")
             except ValueError:
                 print("Invalid ID.")
 
