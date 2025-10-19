@@ -1,3 +1,4 @@
+from unicodedata import name
 from lib.database import CURSOR, CONN
 from lib.logger import log_action
 
@@ -32,6 +33,13 @@ class Performer:
     @classmethod
     def find_by_id(cls, performer_id):
         row = CURSOR.execute("SELECT * FROM performers WHERE id = ?", (performer_id,)).fetchone()
+        if row:
+            return cls(id=row[0], name=row[1])
+        return None
+
+    @classmethod
+    def find_by_name(cls, name):
+        row = CURSOR.execute("SELECT * FROM performers WHERE name = ?", (name,)).fetchone()
         if row:
             return cls(id=row[0], name=row[1])
         return None

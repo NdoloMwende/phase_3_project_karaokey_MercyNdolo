@@ -122,7 +122,8 @@ def performer_menu():
         print("1. Add Performer")
         print("2. View All Performers")
         print("3. Delete Performer")
-        print("4. Back to Main Menu")
+        print("4. Find Performer by Name")
+        print("5. Back to Main Menu")
         choice = input("Choose an option: ")
 
         if choice == "1":
@@ -154,9 +155,18 @@ def performer_menu():
                 print("Invalid ID.")
 
         elif choice == "4":
+            name = input("Enter performer name: ")
+            performer = Performer.find_by_name(name)
+            if performer:
+                print(f"Found: {performer.id}: {performer.name}")
+            else:
+                print("Performer not found.")
+
+        elif choice == "5":
             break
         else:
             print("Invalid choice. Try again.")
+
 
 def performance_menu():
     while True:

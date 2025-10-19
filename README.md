@@ -12,6 +12,9 @@ Karaokey is a Python command-line application that helps manage the daily activi
 - **Performance Logging**: Record each performance by linking a performer, song, and room at a given date and time.
 - **Interactive CLI**: Menu-driven navigation, validated inputs, and looping until user exit.
 - **Activity Logging**: All create/delete actions are saved in `lib/logs.txt` with timestamps.
+- **Property methods** for model constraints (e.g., `Room.is_family_friendly`)
+- **Attribute-based lookup** (e.g., find performer by name)
+
 
 ---
 
