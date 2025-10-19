@@ -37,3 +37,13 @@ class Room:
         if row:
             return cls(id=row[0], name=row[1], room_type=row[2], capacity=row[3])
         return None
+
+    @property
+    def is_family_friendly(self):
+        return self.room_type.lower() == 'family'
+
+# if room.is_family_friendly:
+#     print("This room is suitable for families.")
+
+    def __str__(self):
+        return f'Room ID: {self.id}, Name: {self.name}, Type: {self.room_type}, Capacity: {self.capacity}'
