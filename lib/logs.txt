@@ -1,0 +1,1 @@
+[2025-10-19 23:15:37] Created Room "Bomas" (Theater) with capacity 300
