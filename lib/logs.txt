@@ -1,1 +1,4 @@
 [2025-10-19 23:15:37] Created Room "Bomas" (Theater) with capacity 300
+[2025-10-19 23:21:07] Added Song "Hold Me" by Ream (AfroPop)
+[2025-10-19 23:21:24] Deleted Song "Hold Me" (ID: 1)
+[2025-10-19 23:25:16] Registered Performer "Caedor"
