@@ -50,12 +50,18 @@ karaokey/
 
 ---
 
-## How to Run
+## Environment Setup
 
-1. Clone the repository
+This project uses Pipenv for environment management.
+
+To install and run:
+
+1. Install Pipenv: `pip install pipenv`
 2. Navigate to the project folder
-3. Run: `python main.py`
-4. Use the menu to interact with the system
+3. Run: `pipenv install`
+4. Activate: `pipenv shell`
+5. Start the app: `python main.py`
+6. Use the menu to interact with the system
 
 ---
 
